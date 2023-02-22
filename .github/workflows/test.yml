@@ -17,5 +17,5 @@ jobs:
       - run: npm test
       - name: Push test result to Testspace
         run: |
-          testspace junit.xml @./screenshots-list.txt
+          testspace cypress/results/*.xml
         if: always()
