@@ -48,7 +48,8 @@ The following steps required to setup frome scratch.
 node_modules
 cypress/screenshots
 cypress/videos
-results/
+cypress/results
+logs
 ```
 
 ### Packages
@@ -61,28 +62,25 @@ Using https://github.com/cypress-io/cypress
 npm install cypress --save-dev
 ```
 
-### Reporter
-Configure built-in moacha reporter - https://mochajs.org/#reporters.
-
-Note. Requires the use of `[hash]` to generate unique report for each file executed.
-
-`cpyress.config.js`
+Terminal output:
 ```
-const { defineConfig } = require("cypress");
-module.exports = defineConfig({
-  reporter: 'junit',
-  reporterOptions: {
-    mochaFile: 'cypress/results/results.[hash].xml',
-  },
-  e2e: {
-    setupNodeEvents(on, config) {
-      // implement node event listeners here
-    },
-  },
-});
-
+npm i --save-dev cypress-terminal-report
 ```
+
+### Configuration
+The `cpyress.config.js` specifics:
+
+- Configure built-in *moacha reporter* to use the `[hash]` to generate unique report for each file executed.
+- The *cypress-terminal-report* requires settings
+- The */cypress/support/e2e.js* requires updates
+
 
 ## References
 
 - https://github.com/michaelleeallen/mocha-junit-reporter
+- https://github.com/archfz/cypress-terminal-report - Terminal output plugin
+  - https://github.com/archfz/cypress-terminal-report - demo
+- Issue tracking concerning terminal output
+  - https://github.com/cypress-io/cypress/issues/8823
+  - https://github.com/cypress-io/cypress/issues/448 - issue tracking
+  - https://github.com/flotwig/cypress-log-to-output/issues/22 - outdated

@@ -8,6 +8,16 @@ module.exports = defineConfig({
   e2e: {
     // specPattern: "cypress/tests/*.spec.{js,jsx,ts,tsx}",
     setupNodeEvents(on, config) {
+      const options = {
+        printLogsToConsole: "always",
+        printLogsToFile: "always",
+        outputRoot: config.projectRoot,
+        outputTarget: {
+          'logs |json': 'json',
+          'logs |txt': 'txt',
+        }
+      };
+      require('cypress-terminal-report/src/installLogsPrinter')(on, options);
       // implement node event listeners here
     },
   },
