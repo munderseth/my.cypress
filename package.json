@@ -4,5 +4,8 @@
   },
   "scripts": {
     "test": "npx cypress run"
+  },
+  "devDependencies": {
+    "cypress-terminal-report": "^5.0.2"
   }
 }
