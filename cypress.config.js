@@ -11,7 +11,8 @@ module.exports = defineConfig({
       const options = {
         printLogsToConsole: "always",
         printLogsToFile: "always",
-        outputRoot: config.projectRoot,
+        outputRoot: config.projectRoot + '/cypress/',
+        specRoot: 'cypress/e2e',
         outputTarget: {
           'logs |json': 'json',
           'logs |txt': 'txt',
