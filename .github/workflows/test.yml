@@ -13,6 +13,8 @@ jobs:
       - uses: testspace-com/setup-testspace@v1
         with:
           domain: ${{github.repository_owner}}.stridespace.com
+        env:
+          TESTSPACE_CLIENT_VER: dev
       - run: npm install
       - run: npm test
       - name: Push test result to Testspace
