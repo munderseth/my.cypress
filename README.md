@@ -9,16 +9,35 @@ Using the Cypress [Launchpad](https://docs.cypress.io/guides/getting-started/ope
 npx cypress open
 ```
 
-Script:
+Automation:
 ```
-./run.sh [--spec /to/path]
+npm run test
+```
+
+Script to run 3-my-tests:
+```
+./run-my.sh [--spec /to/path]
 ```
 The script will remove previous results first.
-
 
 Ternimal:
 ```
 npx cypress run [--spec /to/path] [--headed]
+```
+
+## Testspace
+
+Publish:
+
+```
+testspace cypress/results/*.xml{cypress/e2e}
+```
+
+Configuration via console:
+```
+testspace config url https:TOKEN@stridespace.com
+testspace config project munderseth:my.cypress
+testspace config space main
 ```
 
 ## Setup
@@ -56,7 +75,6 @@ module.exports = defineConfig({
     mochaFile: 'cypress/results/results.[hash].xml',
   },
   e2e: {
-    specPattern: "cypress/tests/*.spec.{js,jsx,ts,tsx}",
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
@@ -67,4 +85,4 @@ module.exports = defineConfig({
 
 ## References
 
-- https://www.browserstack.com/guide/how-to-start-with-cypress-debugging
+- https://github.com/michaelleeallen/mocha-junit-reporter

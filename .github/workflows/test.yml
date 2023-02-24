@@ -17,5 +17,5 @@ jobs:
       - run: npm test
       - name: Push test result to Testspace
         run: |
-          testspace cypress/results/*.xml
+          testspace cypress/results/*.xml{cypress/e2e}
         if: always()
