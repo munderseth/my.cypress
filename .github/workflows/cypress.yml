@@ -1,4 +1,4 @@
-name: Cypress Tests
+name: Cypress Cloud
 on:
   workflow_dispatch:
 jobs:
