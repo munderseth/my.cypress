@@ -1,4 +1,4 @@
-name: Test
+name: Testspace Cloud
 on:
   workflow_dispatch:
 jobs:

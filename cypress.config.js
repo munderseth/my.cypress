@@ -15,8 +15,8 @@ module.exports = defineConfig({
         outputRoot: config.projectRoot + '/cypress/',
         specRoot: 'cypress/e2e',
         outputTarget: {
-          'logs |json': 'json',
-          'logs |txt': 'txt',
+          'logs|json': 'json',
+          'logs|txt': 'txt',
         }
       };
       require('cypress-terminal-report/src/installLogsPrinter')(on, options);
