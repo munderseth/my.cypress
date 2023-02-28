@@ -15,13 +15,10 @@ const path = require("path");
  *
  **/
 
-const logRoot         = "./cypress/logs/";
-const videoRoot       = "./cypress/videos/";
-const screenshotsRoot = "./cypress/screenshots";
-
-//const specRoot  = "cypress\\e2e\\";
-const specRoot  = "cypress/e2e/";
-
+const logRoot         = "cypress/logs/";
+const videoRoot       = "cypress/videos/";
+const screenshotsRoot = "cypress/screenshots";
+const specRoot        = "cypress/e2e/";
 
 /**
  * Returns list of Files. Note a "recursive" routine
@@ -43,8 +40,6 @@ async function readLocalFiles(dir,theFiles) {
     });
 }
 
-//var logDir   = "./cypress/logs/1-getting-started";
-//var logDir      = "./cypress/logs";
 const theList   = "list.txt";
 var theFiles = [];
 
@@ -53,8 +48,6 @@ var theFiles = [];
     if ( fs.existsSync(theList) ) fs.unlinkSync(theList);
 
     await readLocalFiles(logRoot, theFiles);
-    //console.log("Files: ", theFiles);
-
     for (var file of theFiles) {
         if (file["extension"] === '.json') {
             let jsonContent = JSON.parse(fs.readFileSync(file["path"], 'utf-8'));
@@ -72,27 +65,17 @@ var theFiles = [];
             let testSuite         = testSuiteWithCase.split(" ->")[0];
             console.log(testFolder, testFile, testSuite);
 
-            /*
-            console.log("  Path:      ", testFilePath);
-            console.log("  Folder:    ",  testFolder);
-            console.log("  testFile:  ",  testFile);
-            console.log("  logFile:   ",  logFile);
-            console.log("  videoFile: ",  videoFile);
-            console.log("  Suite:     ",  testSuite);
-            console.log("");
-            */
-
-            var lRecord = '"['+testFolder+'/'+testSuite+']+'+logRoot+testFolder+'/'+logFile+'{log}"\n';
-            fs.appendFileSync(theList, lRecord);
-            var vRecord = '"['+testFolder+'/'+testSuite+']+'+videoRoot+testFolder+'/'+videoFile+'{video}"\n';
-            fs.appendFileSync(theList, vRecord);
+            var logRecord = '"['+testFolder+'/'+testSuite+']+'+logRoot+testFolder+'/'+logFile+'{log}"\n';
+            fs.appendFileSync(theList, logRecord);
+            var videoRecord = '"['+testFolder+'/'+testSuite+']+'+videoRoot+testFolder+'/'+videoFile+'{video}"\n';
+            fs.appendFileSync(theList, videoRecord);
             var pngFolder = screenshotsRoot+"/"+testFolder+"/"+testFile;
             if ( fs.existsSync(pngFolder) ) {
                 var imageFiles = [];
                 await readLocalFiles(pngFolder, imageFiles);
-                for (var iFile of imageFiles) {
-                    var iRecord = '"['+testFolder+'/'+testSuite+']+'+iFile["path"]+'{image}"\n';
-                    fs.appendFileSync(theList, iRecord);
+                for (var imageFile of imageFiles) {
+                    var imageRecord = '"['+testFolder+'/'+testSuite+']+'+imageFile["path"]+'{image}"\n';
+                    fs.appendFileSync(theList, imageRecord);
                 }
             }
         }
