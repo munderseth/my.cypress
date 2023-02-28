@@ -3,9 +3,11 @@
     "cypress": "^12.6.0"
   },
   "scripts": {
-    "test": "npx cypress run"
+    "test": "npx cypress run",
+    "lint": "eslint src/*.js"
   },
   "devDependencies": {
-    "cypress-terminal-report": "^5.0.2"
+    "cypress-terminal-report": "^5.0.2",
+    "eslint": "^8.35.0"
   }
 }
