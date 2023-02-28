@@ -19,7 +19,9 @@ const logRoot         = "./cypress/logs/";
 const videoRoot       = "./cypress/videos/";
 const screenshotsRoot = "./cypress/screenshots";
 
-const specRoot  = "cypress\\e2e\\";
+//const specRoot  = "cypress\\e2e\\";
+const specRoot  = "cypress/e2e/";
+
 
 /**
  * Returns list of Files. Note a "recursive" routine
@@ -58,8 +60,10 @@ var theFiles = [];
             let jsonContent = JSON.parse(fs.readFileSync(file["path"], 'utf-8'));
 
             let testFilePath      = Object.keys(jsonContent)[0]; // only 1 key in json file
-            let folderAndFile     = testFilePath.split(specRoot)[1];
-            let splitFolderFile   = folderAndFile.split("\\");
+            let testFilePathLinux = testFilePath.replace(/\\/g, "/");
+            let folderAndFile     = testFilePathLinux.split(specRoot)[1];
+            let splitFolderFile   = folderAndFile.split("/");
+
             let testFolder        = splitFolderFile[0];
             let testFile          = splitFolderFile[1];
             let logFile           = testFile.replace("js", "txt");
