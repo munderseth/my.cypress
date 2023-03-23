@@ -24,6 +24,14 @@ Ternimal:
 ```
 npx cypress run [--spec /to/path] [--headed]
 ```
+To use https://www.tesults.com:
+```
+export TARGET=token
+```
+Refer to [Cypress Research Notes](https://github.com/munderseth/my.workflow/issues/99) for token value.
+```
+node runner.js
+```
 
 ## Testspace
 
