@@ -1,4 +1,6 @@
-{
+{ "name": "my.cypress",
+  "version": ".0.1",
+  "description": "This is a sandbox to learn about cypress.",
   "dependencies": {
     "cypress": "^12.6.0"
   },
